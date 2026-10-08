@@ -1,0 +1,187 @@
+{
+  "source": "sources/video-brut-1l-original.mp4",
+  "source_duration_seconds": 37.125,
+  "fps": 24,
+  "resolution": [
+    720,
+    1280
+  ],
+  "silence_detection": {
+    "filter": "silencedetect",
+    "noise_db": -34,
+    "minimum_duration_seconds": 0.24
+  },
+  "retained_gap_seconds": 0.12,
+  "removed_source_intervals_seconds": [
+    [
+      2.875,
+      2.958333
+    ],
+    [
+      8.083333,
+      8.333333
+    ],
+    [
+      13.708333,
+      14.0
+    ],
+    [
+      21.416667,
+      21.541667
+    ],
+    [
+      22.666667,
+      22.875
+    ],
+    [
+      26.458333,
+      26.541667
+    ],
+    [
+      29.666667,
+      29.791667
+    ],
+    [
+      31.916667,
+      32.041667
+    ],
+    [
+      34.666667,
+      34.75
+    ]
+  ],
+  "output_duration_seconds": 35.75,
+  "segments": [
+    {
+      "segment": 1,
+      "source_start_seconds": 0.0,
+      "source_end_seconds": 2.875,
+      "output_start_seconds": 0.0,
+      "output_end_seconds": 2.875,
+      "duration_seconds": 2.875,
+      "zoom": 1.0,
+      "crop_width": 720,
+      "crop_height": 1280,
+      "crop_x": 0,
+      "crop_y": 0
+    },
+    {
+      "segment": 2,
+      "source_start_seconds": 2.958333,
+      "source_end_seconds": 8.083333,
+      "output_start_seconds": 2.875,
+      "output_end_seconds": 8.0,
+      "duration_seconds": 5.125,
+      "zoom": 1.055,
+      "crop_width": 682,
+      "crop_height": 1212,
+      "crop_x": 15,
+      "crop_y": 21
+    },
+    {
+      "segment": 3,
+      "source_start_seconds": 8.333333,
+      "source_end_seconds": 13.708333,
+      "output_start_seconds": 8.0,
+      "output_end_seconds": 13.375,
+      "duration_seconds": 5.375,
+      "zoom": 1.1,
+      "crop_width": 654,
+      "crop_height": 1162,
+      "crop_x": 36,
+      "crop_y": 33
+    },
+    {
+      "segment": 4,
+      "source_start_seconds": 14.0,
+      "source_end_seconds": 21.416667,
+      "output_start_seconds": 13.375,
+      "output_end_seconds": 20.791667,
+      "duration_seconds": 7.416667,
+      "zoom": 1.045,
+      "crop_width": 688,
+      "crop_height": 1224,
+      "crop_x": 14,
+      "crop_y": 19
+    },
+    {
+      "segment": 5,
+      "source_start_seconds": 21.541667,
+      "source_end_seconds": 22.666667,
+      "output_start_seconds": 20.791667,
+      "output_end_seconds": 21.916667,
+      "duration_seconds": 1.125,
+      "zoom": 1.12,
+      "crop_width": 642,
+      "crop_height": 1142,
+      "crop_x": 43,
+      "crop_y": 42
+    },
+    {
+      "segment": 6,
+      "source_start_seconds": 22.875,
+      "source_end_seconds": 26.458333,
+      "output_start_seconds": 21.916667,
+      "output_end_seconds": 25.5,
+      "duration_seconds": 3.583333,
+      "zoom": 1.07,
+      "crop_width": 672,
+      "crop_height": 1196,
+      "crop_x": 21,
+      "crop_y": 24
+    },
+    {
+      "segment": 7,
+      "source_start_seconds": 26.541667,
+      "source_end_seconds": 29.666667,
+      "output_start_seconds": 25.5,
+      "output_end_seconds": 28.625,
+      "duration_seconds": 3.125,
+      "zoom": 1.105,
+      "crop_width": 650,
+      "crop_height": 1158,
+      "crop_x": 37,
+      "crop_y": 39
+    },
+    {
+      "segment": 8,
+      "source_start_seconds": 29.791667,
+      "source_end_seconds": 31.916667,
+      "output_start_seconds": 28.625,
+      "output_end_seconds": 30.75,
+      "duration_seconds": 2.125,
+      "zoom": 1.05,
+      "crop_width": 684,
+      "crop_height": 1218,
+      "crop_x": 14,
+      "crop_y": 18
+    },
+    {
+      "segment": 9,
+      "source_start_seconds": 32.041667,
+      "source_end_seconds": 34.666667,
+      "output_start_seconds": 30.75,
+      "output_end_seconds": 33.375,
+      "duration_seconds": 2.625,
+      "zoom": 1.095,
+      "crop_width": 656,
+      "crop_height": 1168,
+      "crop_x": 35,
+      "crop_y": 35
+    },
+    {
+      "segment": 10,
+      "source_start_seconds": 34.75,
+      "source_end_seconds": 37.125,
+      "output_start_seconds": 33.375,
+      "output_end_seconds": 35.75,
+      "duration_seconds": 2.375,
+      "zoom": 1.025,
+      "crop_width": 702,
+      "crop_height": 1248,
+      "crop_x": 9,
+      "crop_y": 10
+    }
+  ],
+  "sound": "Original source audio only; no music, speech recognition, transcript, or subtitles."
+}

@@ -1,0 +1,57 @@
+{
+  "media": "videos/video-brut-1l-edit/renders/video-brut-1l-dynamique.mp4",
+  "passed": true,
+  "checks": [
+    {
+      "name": "file_exists",
+      "passed": true,
+      "detail": "videos/video-brut-1l-edit/renders/video-brut-1l-dynamique.mp4"
+    },
+    {
+      "name": "ffprobe_readable",
+      "passed": true,
+      "detail": "readable"
+    },
+    {
+      "name": "duration_min",
+      "passed": true,
+      "detail": "35.750s >= 30.000s"
+    },
+    {
+      "name": "duration_max",
+      "passed": true,
+      "detail": "35.750s <= 37.000s"
+    },
+    {
+      "name": "video_present",
+      "passed": true,
+      "detail": "1 video stream(s)"
+    },
+    {
+      "name": "audio_present",
+      "passed": true,
+      "detail": "1 audio stream(s)"
+    },
+    {
+      "name": "width",
+      "passed": true,
+      "detail": "720 == 720"
+    },
+    {
+      "name": "height",
+      "passed": true,
+      "detail": "1280 == 1280"
+    },
+    {
+      "name": "fps",
+      "passed": true,
+      "detail": "24.000 ~= 24.000"
+    }
+  ],
+  "manual_checks_required": [
+    "contact-sheet visual inspection",
+    "audio listening",
+    "copy and factual review",
+    "rights/provenance review"
+  ]
+}
