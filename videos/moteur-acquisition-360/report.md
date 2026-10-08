@@ -5,14 +5,15 @@
 - `renders/moteur-acquisition-360-vertical.mp4`
 - 34 s · vertical 9:16 · 1080×1920 · 30 fps
 - H.264 High / `yuv420p` · AAC-LC stéréo, 48 kHz
-- Vidéo sans voix off, comme demandé; ambiance électronique instrumentale créée localement.
+- Vidéo sans voix off, comme demandé; ambiance électronique instrumentale créée localement, désormais plus rythmée à 120 BPM.
+- Titres en révélation mot par mot, coupes lumineuses rapides (0,34 s), micro-animations des cartes UI et mouvements de caméra contrôlés.
 
 ## Contrôles effectués
 
 - FFprobe lit le fichier et confirme les dimensions, cadence, durée ainsi que les pistes vidéo et audio.
 - Le contrôle `verify_render.py` a réussi toutes ses vérifications bloquantes.
 - Décodage complet par FFmpeg effectué sans erreur.
-- Contrôle de niveau audio EBU R128 : intégrée `-16.1 LUFS`, crête vraie `-4.0 dBFS`; pas d’écrêtage détecté.
+- Contrôle de niveau audio EBU R128 : intégrée `-16.0 LUFS`, crête vraie `-2.3 dBFS`; pas d’écrêtage détecté.
 - Planche de contact inspectée : texte principal lisible, contraste élevé, composition verticale cohérente, CTA visible.
 - Copie recoupée avec les affirmations présentes sur la page publique : les trois agents, le lien public, les demandes qualifiées, les sorties de contenu et les canaux de prospection.
 - Aucun chiffre de performance ou résultat client n’a été inventé. L’offre est formulée comme gratuite **pendant la phase de test**, et non comme gratuite à vie.

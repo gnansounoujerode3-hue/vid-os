@@ -139,7 +139,7 @@ def draw_pill(draw: ImageDraw.ImageDraw, x: int, y: int, text: str,
     return w
 
 
-def draw_wordmark(draw: ImageDraw.ImageDraw, scene_idx: int) -> None:
+def draw_wordmark(draw: ImageDraw.ImageDraw, scene_idx: int, scene_p: float = 0.0) -> None:
     # Typographic use of the published product name; no unofficial icon is fabricated.
     draw_left(draw, 70, 52, "MOTEUR", font("bold", 23), WHITE)
     draw_left(draw, 175, 55, "D’ACQUISITION 360°", font("mono", 17), MUTED)
@@ -148,7 +148,8 @@ def draw_wordmark(draw: ImageDraw.ImageDraw, scene_idx: int) -> None:
     draw.line((x0, y0, x1, y0), fill=(50, 57, 68, 190), width=2)
     full = x1 - x0
     current = sum(end - start for start, end, _ in SCENES[:scene_idx])
-    draw.line((x0, y0, x0 + int(full * current / DURATION), y0), fill=(*MINT, 210), width=3)
+    current += (SCENES[scene_idx][1] - SCENES[scene_idx][0]) * clamp(scene_p)
+    draw.line((x0, y0, x0 + int(full * current / DURATION), y0), fill=(*MINT, 225), width=3)
 
 
 def make_background() -> Image.Image:
@@ -183,20 +184,46 @@ def make_background() -> Image.Image:
 BACKGROUND = make_background()
 
 
+def draw_kinetic_center(draw: ImageDraw.ImageDraw, y: float, text: str,
+                        fnt: ImageFont.FreeTypeFont, fill, progress: float,
+                        *, stagger: float = 0.13, duration: float = 0.43) -> None:
+    """Reveal words in a quick, readable stagger with short directional travel."""
+    words = text.split()
+    if not words:
+        return
+    space = draw.textlength(" ", font=fnt)
+    widths = [draw.textlength(word, font=fnt) for word in words]
+    x = (W - (sum(widths) + space * (len(words) - 1))) / 2
+    for i, word in enumerate(words):
+        q = ease(clamp((progress - i * stagger) / duration))
+        if q <= 0:
+            x += widths[i] + space
+            continue
+        dx = (1 - q) * (32 if i % 2 else -32)
+        dy = (1 - q) * 25
+        alpha = int(255 * q)
+        draw.text((int(x + dx), int(y + dy)), word, font=fnt, fill=(*fill, alpha))
+        x += widths[i] + space
+
+
 def scene_heading(draw: ImageDraw.ImageDraw, kicker: str, lines: list[str], subtitle: str,
                   p: float, *, title_y: int = 300, title_size: int = 86,
                   accent_indexes: tuple[int, ...] = (1,), subtitle_y: int | None = None) -> None:
-    intro = ease(clamp(p / 0.32))
-    shift = int((1 - intro) * 34)
-    draw_center(draw, 205 + shift, kicker.upper(), font("mono", 22), MINT)
+    intro = ease(clamp(p / 0.30))
+    shift = int((1 - intro) * 30)
+    alpha = int(255 * intro)
+    draw_center(draw, 205 + shift, kicker.upper(), font("mono", 22), (*MINT, alpha))
     y = title_y + shift
     line_h = int(title_size * 1.22)
     for i, line in enumerate(lines):
         fill = MINT if i in accent_indexes else WHITE
-        draw_center(draw, y + i * line_h, line, font("bold", title_size), fill)
+        progress = clamp((p - 0.025 - i * 0.055) / 0.22)
+        draw_kinetic_center(draw, y + i * line_h, line, font("bold", title_size), fill, progress)
     if subtitle:
+        sub_intro = ease(clamp((p - 0.18) / 0.24))
         sy = subtitle_y if subtitle_y is not None else y + len(lines) * line_h + 27
-        draw_wrapped(draw, 82, sy + shift, subtitle, 916, font("regular", 31), MUTED, 43, align="center")
+        draw_wrapped(draw, 82, sy + shift + int((1 - sub_intro) * 18), subtitle, 916,
+                     font("regular", 31), (*MUTED, int(255 * sub_intro)), 43, align="center")
 
 
 def entry(p: float, delay: float = 0.0, duration: float = 0.3) -> float:
@@ -215,8 +242,9 @@ def draw_scene_1(draw: ImageDraw.ImageDraw, p: float) -> None:
     ]
     for i, (x1, y1, x2, y2, label, body, direction) in enumerate(cards):
         r = entry(p, 0.10 + i * 0.075, 0.34)
-        x = x1 + int(direction * (1 - r) * 90)
-        dy = int(math.sin(p * 7 + i) * 5)
+        float_phase = p * math.tau * 1.15 + i * 1.7
+        x = x1 + int(direction * (1 - r) * 120) + int(math.sin(float_phase) * 13)
+        dy = int(math.sin(float_phase + 0.8) * 16)
         draw_card(draw, (x, y1 + dy, x + (x2 - x1), y2 + dy), radius=26,
                   accent=MINT if i == 0 else None)
         draw_left(draw, x + 31, y1 + dy + 26, label, font("mono", 18), MINT if i == 0 else MUTED)
@@ -235,15 +263,16 @@ def draw_scene_2(draw: ImageDraw.ImageDraw, p: float) -> None:
         ("03", "PROSPECTER", "Préparer chaque prise de contact."),
     ]
     for i, (num, label, detail) in enumerate(rows):
-        r = entry(p, 0.12 + i * 0.11, 0.30)
-        y = 755 + i * 220 + int((1 - r) * 38)
+        r = entry(p, 0.10 + i * 0.09, 0.24)
+        pulse = 0.48 + 0.52 * (0.5 + 0.5 * math.sin(p * math.tau * 2.2 + i * 1.8))
+        y = 755 + i * 220 + int((1 - r) * 50) + int(math.sin(p * math.tau * 1.1 + i) * 7)
         draw_card(draw, (92, y, 988, y + 168), radius=26, accent=MINT if i == 0 else None)
         draw_left(draw, 126, y + 32, num, font("mono", 23), MINT)
         draw_left(draw, 208, y + 28, label, font("bold", 25), WHITE)
         draw_left(draw, 208, y + 79, detail, font("regular", 26), MUTED)
-        # A small, restrained progress track—not a claim of automated completion.
+        # Moving signal bars visualize the workload, not task completion.
         rounded(draw, (858, y + 42, 938, y + 50), 4, (47, 55, 65, 255))
-        rounded(draw, (858, y + 42, 858 + int(80 * r), y + 50), 4, (*MINT, 255))
+        rounded(draw, (858, y + 42, 858 + int(80 * pulse), y + 50), 4, (*MINT, 255))
     draw_center(draw, 1507, "Un espace pour structurer ce qui vient avant la mission.", font("regular", 25), MUTED)
 
 
@@ -269,10 +298,18 @@ def draw_scene_3(draw: ImageDraw.ImageDraw, p: float) -> None:
         ("Quelle est la prochaine étape ?", "Le résultat que tu recherches"),
     ]
     for i, (label, placeholder) in enumerate(fields):
-        yy = cy + 169 + i * 117
-        draw_left(draw, 137, yy, label, font("bold", 21), WHITE)
-        rounded(draw, (132, yy + 39, 948, yy + 95), 15, (12, 14, 19, 255), (*BORDER, 210), 1)
-        draw_left(draw, 154, yy + 54, placeholder, font("regular", 19), DIM)
+        row_progress = ease(clamp((p - (0.16 + i * 0.10)) / 0.22))
+        yy = cy + 169 + i * 117 + int((1 - row_progress) * 20)
+        draw_left(draw, 137, yy, label, font("bold", 21), (*WHITE, int(255 * row_progress)))
+        active = int(p * 5.0) % 3 == i and p > 0.24
+        outline = (*MINT, 190) if active else (*BORDER, 210)
+        rounded(draw, (132, yy + 39, 948, yy + 95), 15, (12, 14, 19, 255), outline, 2 if active else 1)
+        type_progress = clamp((p - (0.19 + i * 0.11)) / 0.18)
+        shown = placeholder[:int(len(placeholder) * ease(type_progress))]
+        draw_left(draw, 154, yy + 54, shown, font("regular", 19), DIM)
+        if active and type_progress < 1.0 and int(p * 12) % 2 == 0:
+            caret_x = 154 + int(draw.textlength(shown, font=font("regular", 19))) + 3
+            draw.line((caret_x, yy + 53, caret_x, yy + 77), fill=(*MINT, 220), width=2)
     # CTA shown as a form example only.
     rounded(draw, (132, cy + 540, 520, cy + 600), 16, (*MINT, 255))
     draw_left(draw, 164, cy + 558, "Envoyer ma demande", font("bold", 20), (12, 14, 17, 255))
@@ -296,13 +333,15 @@ def draw_scene_4(draw: ImageDraw.ImageDraw, p: float) -> None:
         ("À COURT TERME", "Hier · 18:07", "PME", "Organiser les demandes et améliorer le suivi."),
     ]
     for i, (status, date, client, desc) in enumerate(rows):
-        rr = entry(p, 0.24 + i * 0.15, 0.34)
-        yy = y + 190 + i * 230 + int((1 - rr) * 34)
+        rr = entry(p, 0.16 + i * 0.12, 0.24)
+        yy = y + 190 + i * 230 + int((1 - rr) * 42) + int(math.sin(p * math.tau * 1.2 + i) * 5)
         rounded(draw, (92, yy, 988, yy + 203), 23, (21, 25, 32, 255), (*BORDER, 180), 1)
-        draw_pill(draw, 119, yy + 21, status, accent=(i == 0), fsize=15, pad_x=13, h=39)
+        draw_pill(draw, 119, yy + 21, status, accent=(i == 0 and int(p * 5) % 2 == 0), fsize=15, pad_x=13, h=39)
         draw_left(draw, 782, yy + 30, date, font("mono", 14), MUTED)
         draw_left(draw, 122, yy + 77, client, font("bold", 24), WHITE)
         draw_wrapped(draw, 122, yy + 121, desc, 800, font("regular", 20), MUTED, 28)
+        scan_x = 116 + int(((p * 1.7 + i * 0.32) % 1.0) * 710)
+        draw.line((scan_x, yy + 193, scan_x + 92, yy + 193), fill=(*MINT, 95), width=2)
     draw_left(draw, 100, y + 670, "TRIER PAR PRIORITÉ OU PAR DATE", font("mono", 14), DIM)
 
 
@@ -310,18 +349,20 @@ def draw_scene_5(draw: ImageDraw.ImageDraw, p: float) -> None:
     scene_heading(draw, "02 / Agent Contenu", ["Une idée brute.", "Un contenu à travailler."],
                   "LinkedIn · Facebook · prompt visuel", p,
                   title_y=290, title_size=78, accent_indexes=(1,), subtitle_y=535)
-    r1 = entry(p, 0.12, 0.28)
-    y1 = 710 + int((1 - r1) * 42)
+    r1 = entry(p, 0.10, 0.24)
+    y1 = 710 + int((1 - r1) * 46) + int(math.sin(p * math.tau * 1.15) * 8)
     draw_card(draw, (84, y1, 996, y1 + 222), radius=28, fill=(18, 21, 28, 255), accent=LILAC)
     draw_left(draw, 124, y1 + 29, "TON IDÉE", font("mono", 17), LILAC)
     draw_wrapped(draw, 124, y1 + 77, "Partager 3 conseils pour mieux cadrer une mission freelance", 820,
                  font("bold", 29), WHITE, 38)
-    # Animated path from raw idea to a usable draft.
-    mid = 976
-    draw.line((W // 2, y1 + 226, W // 2, mid - 18), fill=(*MINT, 170), width=3)
-    draw.ellipse((W // 2 - 8, mid - 8, W // 2 + 8, mid + 8), fill=(*MINT, 255))
-    r2 = entry(p, 0.32, 0.30)
-    y2 = 1028 + int((1 - r2) * 54)
+    # A moving signal travels from the raw idea toward its draft.
+    r2 = entry(p, 0.25, 0.24)
+    y2 = 1028 + int((1 - r2) * 54) + int(math.sin(p * math.tau * 1.15 + 0.8) * 8)
+    start_y, end_y = y1 + 226, y2 - 18
+    draw.line((W // 2, start_y, W // 2, end_y), fill=(*MINT, 100), width=3)
+    dot_phase = (p * 1.7) % 1.0
+    dot_y = int(start_y + (end_y - start_y) * dot_phase)
+    draw.ellipse((W // 2 - 10, dot_y - 10, W // 2 + 10, dot_y + 10), fill=(*MINT, 255))
     draw_card(draw, (84, y2, 996, y2 + 454), radius=28, fill=(18, 21, 28, 255))
     draw_pill(draw, 122, y2 + 26, "PUBLICATION · LINKEDIN", accent=True, fsize=16, pad_x=15, h=44)
     draw_left(draw, 124, y2 + 96, "3 questions à poser avant de lancer un projet", font("bold", 28), WHITE)
@@ -337,83 +378,106 @@ def draw_scene_6(draw: ImageDraw.ImageDraw, p: float) -> None:
     scene_heading(draw, "03 / Agent Prospection", ["Des messages", "plus personnalisés."],
                   "À partir des informations dont tu disposes.", p,
                   title_y=290, title_size=82, accent_indexes=(1,), subtitle_y=535)
-    r = entry(p, 0.12, 0.30)
-    pill_y = 718 + int((1 - r) * 35)
+    r = entry(p, 0.08, 0.24)
+    pill_y = 718 + int((1 - r) * 42) + int(math.sin(p * math.tau * 1.2) * 5)
+    labels = ["LINKEDIN", "EMAIL", "WHATSAPP"]
+    active_idx = int(p * 3.4) % len(labels)
     x = 104
-    for label in ["LINKEDIN", "EMAIL", "WHATSAPP"]:
-        w = draw_pill(draw, x, pill_y, label, accent=(label == "LINKEDIN"), fsize=18, pad_x=20, h=49)
+    for i, label in enumerate(labels):
+        w = draw_pill(draw, x, pill_y, label, accent=(i == active_idx), fsize=18, pad_x=20, h=49)
         x += w + 20
-    cy = 828 + int((1 - r) * 48)
+    cy = 828 + int((1 - r) * 55) + int(math.sin(p * math.tau * 1.0 + 0.6) * 8)
     draw_card(draw, (84, cy, 996, cy + 610), radius=29, fill=(18, 21, 28, 255))
     draw_left(draw, 125, cy + 34, "BROUILLON PERSONNALISÉ", font("mono", 16), MINT)
     draw_left(draw, 125, cy + 87, "Objet · Une idée pour votre activité", font("bold", 24), WHITE)
     rounded(draw, (124, cy + 141, 954, cy + 143), 1, (*BORDER, 200))
-    draw_left(draw, 126, cy + 174, "Bonjour [Prénom],", font("regular", 25), WHITE)
-    draw_wrapped(draw, 126, cy + 226,
-                 "J’ai remarqué [élément de contexte]. Je vous écris au sujet de [besoin repéré] et d’une piste qui pourrait vous être utile.",
-                 790, font("regular", 23), MUTED, 36)
+    greeting_progress = ease(clamp((p - 0.14) / 0.18))
+    draw_left(draw, 126, cy + 174, "Bonjour [Prénom],"[:int(len("Bonjour [Prénom],") * greeting_progress)], font("regular", 25), WHITE)
+    message = "J’ai remarqué [élément de contexte]. Je vous écris au sujet de [besoin repéré] et d’une piste qui pourrait vous être utile."
+    typing = ease(clamp((p - 0.22) / 0.37))
+    typed = message[:int(len(message) * typing)]
+    draw_wrapped(draw, 126, cy + 226, typed, 790, font("regular", 23), MUTED, 36)
+    if typing < 1.0 and int(p * 12) % 2 == 0:
+        cursor_x = 126 + int(draw.textlength(typed[-42:], font=font("regular", 23))) + 3
+        draw.line((cursor_x, cy + 260, cursor_x, cy + 286), fill=(*MINT, 220), width=2)
     draw_left(draw, 126, cy + 400, "À adapter selon le prospect et le contexte.", font("regular", 18), DIM)
     rounded(draw, (124, cy + 470, 952, cy + 472), 1, (*BORDER, 180))
     draw_pill(draw, 125, cy + 505, "À RELIRE AVANT ENVOI", accent=False, fsize=15, pad_x=15, h=42)
 
 
 def draw_scene_7(draw: ImageDraw.ImageDraw, p: float) -> None:
-    intro = ease(clamp(p / 0.32))
-    shift = int((1 - intro) * 34)
-    draw_center(draw, 205 + shift, "MOTEUR D’ACQUISITION 360°", font("mono", 22), MINT)
+    intro = ease(clamp(p / 0.28))
+    shift = int((1 - intro) * 30)
+    draw_center(draw, 205 + shift, "MOTEUR D’ACQUISITION 360°", font("mono", 22), (*MINT, int(255 * intro)))
     lines = [("Attirer.", WHITE), ("Qualifier.", MINT), ("Développer.", WHITE)]
     for i, (txt, color) in enumerate(lines):
-        draw_center(draw, 278 + shift + i * 104, txt, font("bold", 78), color)
-    draw_center(draw, 620 + shift, "Trois briques. Un seul système.", font("regular", 31), MUTED)
+        draw_kinetic_center(draw, 278 + shift + i * 104, txt, font("bold", 78), color,
+                            clamp((p - 0.02 - i * 0.045) / 0.24), stagger=0.08, duration=0.25)
+    sub_alpha = int(255 * ease(clamp((p - 0.22) / 0.24)))
+    draw_center(draw, 620 + shift, "Trois briques. Un seul système.", font("regular", 31), (*MUTED, sub_alpha))
 
     rows = [
         ("01", "ATTIRER", "Agent Contenu", LILAC),
         ("02", "QUALIFIER", "Agent Qualification", MINT),
         ("03", "DÉVELOPPER", "Agent Prospection", WHITE),
     ]
+    # The moving connector makes the three-agent handoff legible without claiming automation.
+    draw.line((540, 785, 540, 1318), fill=(77, 88, 101, 165), width=3)
+    node_y = 785 + int(((p * 1.8) % 1.0) * 533)
+    draw.ellipse((530, node_y - 10, 550, node_y + 10), fill=(*MINT, 245))
     for i, (num, title, detail, accent) in enumerate(rows):
-        r = entry(p, 0.12 + i * 0.13, 0.30)
-        y = 770 + i * 190 + int((1 - r) * 45)
+        r = entry(p, 0.08 + i * 0.10, 0.22)
+        y = 770 + i * 190 + int((1 - r) * 58) + int(math.sin(p * math.tau * 1.0 + i) * 5)
         draw_card(draw, (125, y, 955, y + 141), radius=26, accent=accent if accent in (MINT, LILAC) else None)
         draw_left(draw, 160, y + 25, num, font("mono", 18), accent)
         draw_left(draw, 233, y + 20, title, font("bold", 24), WHITE)
         draw_left(draw, 233, y + 66, detail, font("regular", 22), MUTED)
-        draw.ellipse((875, y + 51, 909, y + 85), outline=(*accent, 255), width=3)
-        draw.ellipse((887, y + 63, 897, y + 73), fill=(*accent, 255))
+        cx, cy = 892, y + 68
+        draw.ellipse((cx - 17, cy - 17, cx + 17, cy + 17), outline=(*accent, 230), width=3)
+        angle = p * math.tau * 2.0 + i * 2.1
+        dot_x, dot_y = cx + math.cos(angle) * 11, cy + math.sin(angle) * 11
+        draw.ellipse((int(dot_x - 5), int(dot_y - 5), int(dot_x + 5), int(dot_y + 5)), fill=(*accent, 255))
     draw_pill(draw, 295, 1402, "UN SEUL ESPACE DE TRAVAIL", accent=True, fsize=19, pad_x=24, h=56)
 
 
 def draw_scene_8(draw: ImageDraw.ImageDraw, p: float) -> None:
     intro = ease(clamp(p / 0.30))
     shift = int((1 - intro) * 28)
-    draw_center(draw, 236 + shift, "MOTEUR D’ACQUISITION", font("mono", 20), MUTED)
-    draw_center(draw, 285 + shift, "360°", font("bold", 122), MINT)
-    draw_center(draw, 449 + shift, "Un système qui travaille", font("bold", 52), WHITE)
-    draw_center(draw, 514 + shift, "avec toi.", font("bold", 52), WHITE)
-    draw_center(draw, 630 + shift, "POUR LES FREELANCES", font("mono", 19), MUTED)
+    draw_center(draw, 236 + shift, "MOTEUR D’ACQUISITION", font("mono", 20), (*MUTED, int(255 * intro)))
+    mark_size = int(122 + 7 * math.sin(p * math.tau * 2.0))
+    draw_kinetic_center(draw, 285 + shift, "360°", font("bold", mark_size), MINT,
+                        clamp((p - 0.015) / 0.22), stagger=0.05, duration=0.25)
+    draw_kinetic_center(draw, 449 + shift, "Un système qui travaille", font("bold", 52), WHITE,
+                        clamp((p - 0.08) / 0.24), stagger=0.075, duration=0.30)
+    draw_kinetic_center(draw, 514 + shift, "avec toi.", font("bold", 52), WHITE,
+                        clamp((p - 0.15) / 0.24), stagger=0.10, duration=0.28)
+    draw_center(draw, 630 + shift, "POUR LES FREELANCES", font("mono", 19), (*MUTED, int(255 * intro)))
 
-    r = entry(p, 0.12, 0.30)
-    y = 748 + int((1 - r) * 42)
+    r = entry(p, 0.08, 0.22)
+    y = 748 + int((1 - r) * 42) + int(math.sin(p * math.tau * 0.9) * 5)
     draw_card(draw, (82, y, 998, y + 335), radius=30, fill=(18, 21, 28, 255), outline=(*MINT, 100))
     draw_left(draw, 126, y + 34, "OFFRE DE TEST", font("mono", 17), MINT)
-    draw_left(draw, 126, y + 83, "0 F CFA", font("bold", 72), WHITE)
+    price_size = int(72 + 4 * math.sin(p * math.tau * 1.5))
+    draw_left(draw, 126, y + 83, "0 F CFA", font("bold", price_size), WHITE)
     draw_left(draw, 126, y + 180, "Gratuit pendant la phase de test.", font("regular", 27), WHITE)
     draw_left(draw, 126, y + 236, "Sans carte bancaire. Sans engagement.", font("regular", 21), MUTED)
 
     button_y = 1174 + int((1 - r) * 40)
-    pulse = 1.0 + 0.015 * math.sin(p * math.pi * 8)
+    pulse = 1.0 + 0.024 * math.sin(p * math.pi * 8)
     bw = int(882 * pulse)
     bx = (W - bw) // 2
     rounded(draw, (bx, button_y, bx + bw, button_y + 116), 25, (*MINT, 255))
     draw_center(draw, button_y + 33, "CRÉE TON ESPACE GRATUITEMENT", font("bold", 25), (12, 14, 17, 255))
     draw_center(draw, button_y + 69, "→", font("bold", 30), (12, 14, 17, 255))
+    shine_x = bx + 22 + int(((p * 2.2) % 1.0) * (bw - 44))
+    draw.line((shine_x, button_y + 18, shine_x, button_y + 97), fill=(255, 255, 255, 125), width=4)
     draw_center(draw, 1353, "moteur-acquisition-360.onrender.com", font("mono", 19), WHITE)
     draw_center(draw, 1502, "Attirer · Qualifier · Développer", font("regular", 24), MUTED)
     # A subtle, deterministic orbit suggests a connected system without inventing a logo.
     cx, cy = W // 2, 1682
     radius = 84
     draw.ellipse((cx - radius, cy - radius, cx + radius, cy + radius), outline=(70, 81, 92, 170), width=2)
-    angle = p * math.pi * 4
+    angle = p * math.tau * 3.4
     for i, col in enumerate((MINT, LILAC, WHITE)):
         a = angle + i * (2 * math.pi / 3)
         x = cx + math.cos(a) * radius
@@ -429,28 +493,57 @@ def apply_alpha(layer: Image.Image, opacity: float) -> Image.Image:
     return layer
 
 
+def draw_transition_fx(draw: ImageDraw.ImageDraw, elapsed: float, scene_idx: int) -> None:
+    """Fast diagonal light-slice on each cut, with a short directional streak."""
+    span = 0.34
+    q = clamp(elapsed / span)
+    if elapsed < 0 or elapsed > span:
+        return
+    strength = math.sin(math.pi * q)
+    x = -430 + q * (W + 860)
+    alpha = int(75 * strength)
+    points = [(int(x - 130), 0), (int(x - 45), 0),
+              (int(x + 335), H), (int(x + 250), H)]
+    tint = MINT if scene_idx % 2 == 0 else LILAC
+    draw.polygon(points, fill=(*tint, alpha))
+    draw.line((int(x + 12), 0, int(x + 392), H), fill=(*WHITE, int(125 * strength)), width=4)
+    draw.line((int(x - 42), 0, int(x + 338), H), fill=(*tint, int(80 * strength)), width=2)
+
+
+def camera_move(frame: Image.Image, p: float, t: float, scene_idx: int, scene_start: float) -> Image.Image:
+    """Deterministic punch-in/pull-out with a short whip-settle at every cut."""
+    intro = 1.0 - ease(clamp((t - scene_start) / 0.28))
+    zoom = 1.0 + 0.042 * math.sin(math.pi * p) ** 2 + 0.018 * intro
+    sw, sh = int(W * zoom), int(H * zoom)
+    scaled = frame.resize((sw, sh), Image.Resampling.LANCZOS)
+    pan_x = int(math.sin(p * math.tau + scene_idx * 0.75) * 15 + (1 if scene_idx % 2 == 0 else -1) * intro * 28)
+    pan_y = int(math.cos(p * math.tau * 0.78 + scene_idx) * 16 - intro * 22)
+    left = max(0, min(sw - W, int((sw - W) / 2 + pan_x)))
+    top = max(0, min(sh - H, int((sh - H) / 2 + pan_y)))
+    return scaled.crop((left, top, left + W, top + H))
+
+
 def render_frame(t: float) -> Image.Image:
     idx = next((i for i, (a, b, _) in enumerate(SCENES) if a <= t < b), len(SCENES) - 1)
     start, end, _ = SCENES[idx]
     p = clamp((t - start) / (end - start))
-    # Brief, clean fades between cards; content remains seekable and deterministic.
-    fade_in = ease(clamp((t - start) / 0.20))
-    fade_out = ease(clamp((end - t) / 0.20))
-    opacity = min(fade_in, fade_out)
+    # Only the video head and tail fade; scene-to-scene changes are whip cuts.
+    opacity = ease(clamp(t / 0.08)) * min(1.0, max(0.0, (DURATION - t) / 0.10))
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer, "RGBA")
-    draw_wordmark(d, idx)
+    draw_wordmark(d, idx, p)
     scene_fn = [draw_scene_1, draw_scene_2, draw_scene_3, draw_scene_4,
                 draw_scene_5, draw_scene_6, draw_scene_7, draw_scene_8][idx]
     scene_fn(d, p)
+    draw_transition_fx(d, t - start, idx)
     layer = apply_alpha(layer, opacity)
     frame = BACKGROUND.copy()
     frame.alpha_composite(layer)
-    return frame.convert("RGB")
+    return camera_move(frame.convert("RGB"), p, t, idx, start)
 
 
 def make_score(path: Path) -> dict:
-    """Write a quiet original synth bed. No external samples or copyrighted track."""
+    """Write an upbeat original electronic score. No external samples or copyrighted track."""
     path.parent.mkdir(parents=True, exist_ok=True)
     chord_sets = [
         (73.416, 110.000, 146.832, 174.614),  # Dm add9
@@ -469,33 +562,45 @@ def make_score(path: Path) -> dict:
         buf = bytearray()
         for i in range(samples):
             t = i / SR
-            chord_idx = int(t / 4.0) % 4
-            chord_age = t % 4.0
+            chord_idx = int(t / 2.0) % 4
+            chord_age = t % 2.0
             notes = chord_sets[chord_idx]
-            attack = min(1.0, chord_age / 0.62)
-            release = min(1.0, max(0.0, DURATION - t) / 1.9)
-            env = attack * release
+            attack = min(1.0, chord_age / 0.22)
+            chord_release = min(1.0, max(0.0, 2.0 - chord_age) / 0.28)
+            release = min(1.0, max(0.0, DURATION - t) / 1.5)
+            env = attack * chord_release * release
             pad = 0.0
             for ni, freq in enumerate(notes):
-                # Soft, slightly detuned sine partials for a calm modern-tech bed.
+                # Brighter, slightly detuned synth layers; chord changes every two seconds.
                 phase = 2 * math.pi * freq * t
-                pad += math.sin(phase + ni * 0.17) * 0.016
-                pad += math.sin(phase * 2.001 + ni * 0.41) * 0.003
+                pad += math.sin(phase + ni * 0.17) * 0.020
+                pad += math.sin(phase * 2.001 + ni * 0.41) * 0.005
             pad *= env
+            bass = math.sin(2 * math.pi * roots[chord_idx] * t) * env * 0.018
 
-            # Rounded low pulse every half second, gently ducked beneath text beats.
+            # Four-on-the-floor pulse at 120 BPM with a snare-like synthetic backbeat.
             beat_phase = t % 0.5
-            beat_env = math.exp(-beat_phase * 18.0) if beat_phase < 0.25 else 0.0
-            kick_freq = 68.0 - 23.0 * min(1.0, beat_phase / 0.16)
-            kick = math.sin(2 * math.pi * kick_freq * beat_phase) * beat_env * 0.050
+            beat_env = math.exp(-beat_phase * 17.0) if beat_phase < 0.25 else 0.0
+            kick_freq = 84.0 - 40.0 * min(1.0, beat_phase / 0.15)
+            kick = math.sin(2 * math.pi * kick_freq * beat_phase) * beat_env * 0.095
+            beat_number = int(t / 0.5)
+            clap = 0.0
+            if beat_number % 2 == 1 and beat_phase < 0.14:
+                clap_env = math.exp(-beat_phase * 34.0)
+                clap = (math.sin(2 * math.pi * 2100 * beat_phase)
+                        + 0.6 * math.sin(2 * math.pi * 3700 * beat_phase)
+                        + 0.35 * math.sin(2 * math.pi * 5400 * beat_phase)) * clap_env * 0.014
+            eighth_phase = t % 0.25
+            hat = (math.sin(2 * math.pi * 5900 * eighth_phase)
+                   + 0.5 * math.sin(2 * math.pi * 8100 * eighth_phase)) * math.exp(-eighth_phase * 55.0) * 0.004
 
-            # A soft arpeggio, with changing notes following the current chord.
-            step = int(t / 0.5)
-            pluck_age = t - step * 0.5
+            # Brisk eighth-note arpeggio follows the current chord.
+            step = int(t / 0.25)
+            pluck_age = t - step * 0.25
             pluck_freq = notes[(step * 3) % len(notes)] * 2
-            pluck_env = math.exp(-pluck_age * 5.3)
-            pluck = math.sin(2 * math.pi * pluck_freq * pluck_age) * pluck_env * 0.017
-            pluck += math.sin(2 * math.pi * pluck_freq * 1.5 * pluck_age) * pluck_env * 0.004
+            pluck_env = math.exp(-pluck_age * 8.0)
+            pluck = math.sin(2 * math.pi * pluck_freq * pluck_age) * pluck_env * 0.026
+            pluck += math.sin(2 * math.pi * pluck_freq * 1.5 * pluck_age) * pluck_env * 0.007
 
             # Light cue on each narrative beat; entirely synthesized.
             cue = 0.0
@@ -505,7 +610,7 @@ def make_score(path: Path) -> dict:
                     cue += math.sin(2 * math.pi * (880 - 380 * age) * age) * math.exp(-age * 22) * 0.014
 
             fade = min(1.0, t / 0.9) * min(1.0, max(0.0, DURATION - t) / 1.5)
-            mono = (pad + kick + pluck + cue) * fade
+            mono = (pad + bass + kick + clap + hat + pluck + cue) * fade
             # Gentle stereo spread, not a hard pan.
             left = mono * (0.91 + 0.05 * math.sin(2 * math.pi * 0.11 * t))
             right = mono * (0.91 + 0.05 * math.sin(2 * math.pi * 0.11 * t + 0.7))

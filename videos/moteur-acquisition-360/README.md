@@ -2,6 +2,8 @@
 
 Livrable principal : `renders/moteur-acquisition-360-vertical.mp4`.
 
+Version dynamique : titres animés mot par mot, whip-cuts lumineux de 0,34 s, zooms/pans contrôlés, micro-mouvements de l’interface schématique et musique synthétique rythmée à 120 BPM.
+
 - Brief : `BRIEF.md`
 - Storyboard / texte écran : `STORYBOARD.md`
 - Rapport de vérification : `report.md`
