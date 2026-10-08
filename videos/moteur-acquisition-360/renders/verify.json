@@ -1,0 +1,57 @@
+{
+  "media": "renders/moteur-acquisition-360-vertical.mp4",
+  "passed": true,
+  "checks": [
+    {
+      "name": "file_exists",
+      "passed": true,
+      "detail": "renders/moteur-acquisition-360-vertical.mp4"
+    },
+    {
+      "name": "ffprobe_readable",
+      "passed": true,
+      "detail": "readable"
+    },
+    {
+      "name": "duration_min",
+      "passed": true,
+      "detail": "34.000s >= 33.900s"
+    },
+    {
+      "name": "duration_max",
+      "passed": true,
+      "detail": "34.000s <= 34.100s"
+    },
+    {
+      "name": "video_present",
+      "passed": true,
+      "detail": "1 video stream(s)"
+    },
+    {
+      "name": "audio_present",
+      "passed": true,
+      "detail": "1 audio stream(s)"
+    },
+    {
+      "name": "width",
+      "passed": true,
+      "detail": "1080 == 1080"
+    },
+    {
+      "name": "height",
+      "passed": true,
+      "detail": "1920 == 1920"
+    },
+    {
+      "name": "fps",
+      "passed": true,
+      "detail": "30.000 ~= 30.000"
+    }
+  ],
+  "manual_checks_required": [
+    "contact-sheet visual inspection",
+    "audio listening",
+    "copy and factual review",
+    "rights/provenance review"
+  ]
+}
