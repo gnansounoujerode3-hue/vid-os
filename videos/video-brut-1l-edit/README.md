@@ -19,4 +19,4 @@ python3 videos/video-brut-1l-edit/compositions/render_edit.py
 python3 videos/video-brut-1l-edit/compositions/render_pinterest.py
 ```
 
-Les sous-titres sont générés à partir d’une reconnaissance vocale PocketSphinx effectuée localement. Aucun audio n’est transmis à un service externe. Le premier jet anglais comporte un passage de confiance plus faible vers 3–6 s; écouter et confirmer ce court passage avant une diffusion publique/payante.
+Les sous-titres sont générés à partir d’une reconnaissance vocale PocketSphinx effectuée localement. Aucun audio n’est transmis à un service externe. Le premier jet anglais comporte des formulations à confirmer vers 3–6 s et 18,7–21,3 s, ainsi que « X amount of time »; les vérifier avant diffusion publique/payante.

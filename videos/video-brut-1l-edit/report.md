@@ -10,7 +10,7 @@ Après demande de l’utilisateur, la version sans sous-titres a été remplacé
 
 - Reconnaissance vocale locale PocketSphinx, modèle anglais; aucun service externe utilisé.
 - Texte normalisé pour la ponctuation et quelques corrections contextuelles évidentes.
-- La formulation de l’ouverture, environ **3–6 s de la source**, a une confiance ASR plus faible. Le rendu est exploitable comme premier jet, mais cette petite portion doit être écoutée et corrigée avant une diffusion publique ou payante.
+- Le rendu est un premier jet ASR, pas une transcription certifiée. À écouter et corriger avant diffusion : l’ouverture (**3–6 s**), le passage **18,7–21,3 s** et la formule **« X amount of time »**.
 - Les sous-titres restent en anglais; aucun doublage/traduction française.
 
 ## Source et image

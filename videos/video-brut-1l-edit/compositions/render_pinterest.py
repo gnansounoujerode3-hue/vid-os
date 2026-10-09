@@ -186,7 +186,7 @@ def main() -> int:
         "language": "en",
         "translated": False,
         "method": "offline PocketSphinx first pass; punctuation and obvious context slips normalized",
-        "review_note": "The opening 3–6 seconds contain low-confidence ASR wording; confirm before public/paid use.",
+        "review_note": "First-pass local ASR, not certified. Review source 3–6 s, 18.7–21.3 s, and the phrase X amount of time before public/paid use.",
         "cues": cues,
     }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 

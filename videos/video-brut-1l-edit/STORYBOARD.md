@@ -9,4 +9,4 @@
 | 0:25–0:31 | Priorités concurrentes; une chose doit gagner. | Chapitre « THE CHOICE », accent « ONE THING WINS ». | Voix d’origine. |
 | 0:31–0:35,75 | Choisir une chose plutôt qu’une autre pour être efficace. | Dernier punch-in, sous-titres anglais et finition nette. | Voix d’origine. |
 
-**Règles :** le texte reste en anglais et n’est pas traduit. Les sous-titres sont un premier jet d’ASR local, normalisé pour la lecture; vérifier la formulation d’ouverture (≈ 3–6 s), où la confiance est plus faible, avant une diffusion publique. Pas de musique ou de voix off ajoutée.
+**Règles :** le texte reste en anglais et n’est pas traduit. Les sous-titres sont un premier jet d’ASR local, normalisé pour la lecture; vérifier l’ouverture (≈ 3–6 s), le passage ≈ 18,7–21,3 s et la formule « X amount of time » avant une diffusion publique. Pas de musique ou de voix off ajoutée.
