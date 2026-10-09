@@ -1,0 +1,42 @@
+{
+  "media": "video-brut-1l-our-work-en.mp4",
+  "passed": true,
+  "technical_checks": {
+    "duration_35_75": true,
+    "vertical_720x1280": true,
+    "fps_24": true,
+    "h264_aac": true,
+    "audio_stereo_44100": true,
+    "only_video_audio_streams": true,
+    "full_video_decode": true,
+    "full_audio_decode": true
+  },
+  "summary": {
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "duration_seconds": 35.75,
+    "size_bytes": 5719903,
+    "overall_bitrate_kbps": 1279,
+    "streams": [
+      {
+        "type": "video",
+        "codec": "h264",
+        "profile": "High",
+        "width": 720,
+        "height": 1280,
+        "fps": "24/1",
+        "pixel_format": "yuv420p",
+        "duration_seconds": 35.75
+      },
+      {
+        "type": "audio",
+        "codec": "aac",
+        "profile": "LC",
+        "sample_rate": 44100,
+        "channels": 2,
+        "bitrate_kbps": 192,
+        "duration_seconds": 35.75
+      }
+    ]
+  },
+  "content_note": "The left preview and main edit are synchronized; the original voice is kept from the finished English motion edit. English captions are burned into the main window. Review ASR draft around source 3–6 s and 18.7–21.3 s, plus “X amount of time”, before public/paid release."
+}
