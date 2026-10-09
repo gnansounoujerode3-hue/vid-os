@@ -1,0 +1,11 @@
+# English transcript — local ASR draft
+
+## Raw PocketSphinx hypothesis
+
+> time doesn't need to be managed your priorities didn't ride this is progressing have the cookie cutter information about how to manage your calendars and how to spend x amount of time on certain things no we're moving now for managing time to managing are important and i wanna say something that a lot of people won't say but at some point you're gonna have to choose what your priorities are i know we like to say we have competing priorities at some point something has to win you have to choose one thing over the other if you wanna actually be affected
+
+## English caption copy used in the render
+
+Time doesn't need to be managed. Your priorities need to be managed. We have the cookie-cutter information about how to manage your calendars and how to spend X amount of time on certain things. Now we're moving from managing time to managing what's important. And I wanna say something that a lot of people won't say: but at some point, you're gonna have to choose what your priorities are. I know we like to say we have competing priorities. At some point, something has to win. You have to choose one thing over the other if you wanna actually be effective.
+
+**Review note:** recognition was done locally with PocketSphinx; no audio was sent to a service. The opening words around 3–6 seconds and the transition into “cookie-cutter information” are low confidence. The rendered captions use an English, context-normalized first pass there; please verify that short passage before public or paid release.

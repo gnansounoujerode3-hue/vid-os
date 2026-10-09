@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "sources" / "video-brut-1l-original.mp4"
-OUTPUT = ROOT / "renders" / "video-brut-1l-dynamique.mp4"
+OUTPUT = ROOT / "edit" / "video-brut-1l-cut-base.mp4"
 TIMELINE = ROOT / "edit" / "timeline.json"
 FILTERGRAPH = ROOT / "edit" / "ffmpeg-filtergraph.txt"
 
@@ -181,7 +181,7 @@ def main() -> int:
         [ffprobe, "-v", "error", "-show_format", "-show_streams", "-of", "json", str(OUTPUT)],
         check=True, text=True, capture_output=True,
     )
-    (ROOT / "renders" / "probe.json").write_text(
+    (ROOT / "edit" / "cut-base-probe.json").write_text(
         json.dumps(json.loads(probe.stdout), indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     print(f"Rendered {OUTPUT} ({duration:.3f}s, {len(segments)} beats)")

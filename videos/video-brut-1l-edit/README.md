@@ -1,17 +1,22 @@
 # Montage « vidéo brut 1L »
 
-Projet de montage vertical local de la prise source située dans `sources/`.
+Montage vertical à partir de la prise située dans `sources/`. La version livrable intègre des sous-titres **en anglais**, non traduits, ainsi qu’un motion design éditorial aux accents violet et or.
 
 - Brief : [`BRIEF.md`](BRIEF.md)
-- Plan de montage : [`STORYBOARD.md`](STORYBOARD.md)
+- Storyboard : [`STORYBOARD.md`](STORYBOARD.md)
 - Rapport : [`report.md`](report.md)
-- Script : [`compositions/render_edit.py`](compositions/render_edit.py)
-- Rendu final : [`renders/video-brut-1l-dynamique.mp4`](renders/video-brut-1l-dynamique.mp4)
+- Rendu sous-titré : [`renders/video-brut-1l-pinterest-en.mp4`](renders/video-brut-1l-pinterest-en.mp4)
+- Fichiers de sous-titres anglais : [`subtitles/video-brut-1l-en.ass`](subtitles/video-brut-1l-en.ass) (style/motion) et [`subtitles/video-brut-1l-en.srt`](subtitles/video-brut-1l-en.srt) (texte/minutage).
+- Texte et minutage des captions : [`subtitles/captions-en.json`](subtitles/captions-en.json)
+- Base de montage avant titrage : `edit/video-brut-1l-cut-base.mp4`.
 
-Pour reconstruire le rendu, installer FFmpeg/FFprobe et lancer depuis la racine du dépôt :
+## Reconstruction
+
+Installer FFmpeg/FFprobe, puis lancer depuis la racine du dépôt :
 
 ```bash
 python3 videos/video-brut-1l-edit/compositions/render_edit.py
+python3 videos/video-brut-1l-edit/compositions/render_pinterest.py
 ```
 
-Le script utilise uniquement la détection de silences déjà mesurée, des recadrages et l’audio présent dans le MP4. Il ne génère pas de transcription ou de sous-titres et n’ajoute pas de musique.
+Les sous-titres sont générés à partir d’une reconnaissance vocale PocketSphinx effectuée localement. Aucun audio n’est transmis à un service externe. Le premier jet anglais comporte un passage de confiance plus faible vers 3–6 s; écouter et confirmer ce court passage avant une diffusion publique/payante.

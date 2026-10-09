@@ -1,0 +1,118 @@
+{
+  "language": "en",
+  "translated": false,
+  "method": "offline PocketSphinx first pass; punctuation and obvious context slips normalized",
+  "review_note": "The opening 3–6 seconds contain low-confidence ASR wording; confirm before public/paid use.",
+  "cues": [
+    {
+      "cue": 1,
+      "source_start_seconds": 0.05,
+      "source_end_seconds": 4.3,
+      "output_start_seconds": 0.05,
+      "output_end_seconds": 4.217,
+      "text": "Time doesn't need to be managed.\nYour priorities need to be managed.",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 2,
+      "source_start_seconds": 4.54,
+      "source_end_seconds": 8.05,
+      "output_start_seconds": 4.457,
+      "output_end_seconds": 7.967,
+      "text": "We have the cookie-cutter\ninformation",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 3,
+      "source_start_seconds": 8.36,
+      "source_end_seconds": 10.24,
+      "output_start_seconds": 8.027,
+      "output_end_seconds": 9.907,
+      "text": "about how to manage your calendars",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 4,
+      "source_start_seconds": 10.59,
+      "source_end_seconds": 13.36,
+      "output_start_seconds": 10.257,
+      "output_end_seconds": 13.027,
+      "text": "and how to spend X amount of time\non certain things.",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 5,
+      "source_start_seconds": 13.37,
+      "source_end_seconds": 18.52,
+      "output_start_seconds": 13.037,
+      "output_end_seconds": 17.895,
+      "text": "Now we're moving from managing time\nto managing what's important.",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 6,
+      "source_start_seconds": 18.68,
+      "source_end_seconds": 21.32,
+      "output_start_seconds": 18.055,
+      "output_end_seconds": 20.695,
+      "text": "And I wanna say something\nthat a lot of people won't say:",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 7,
+      "source_start_seconds": 21.58,
+      "source_end_seconds": 26.4,
+      "output_start_seconds": 20.83,
+      "output_end_seconds": 25.442,
+      "text": "But at some point, you're gonna have to\nchoose what your priorities are.",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 8,
+      "source_start_seconds": 26.62,
+      "source_end_seconds": 29.61,
+      "output_start_seconds": 25.578,
+      "output_end_seconds": 28.568,
+      "text": "I know we like to say we have\ncompeting priorities.",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 9,
+      "source_start_seconds": 29.82,
+      "source_end_seconds": 31.85,
+      "output_start_seconds": 28.653,
+      "output_end_seconds": 30.683,
+      "text": "At some point,\nsomething has to win.",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 10,
+      "source_start_seconds": 32.09,
+      "source_end_seconds": 34.59,
+      "output_start_seconds": 30.798,
+      "output_end_seconds": 33.298,
+      "text": "You have to choose one thing\nover the other.",
+      "language": "English",
+      "translation": false
+    },
+    {
+      "cue": 11,
+      "source_start_seconds": 34.81,
+      "source_end_seconds": 36.98,
+      "output_start_seconds": 33.435,
+      "output_end_seconds": 35.605,
+      "text": "If you wanna actually be effective.",
+      "language": "English",
+      "translation": false
+    }
+  ]
+}
