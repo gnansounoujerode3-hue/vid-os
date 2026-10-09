@@ -1,0 +1,93 @@
+[Script Info]
+Title: Video brut 1L — English motion edit v2
+ScriptType: v4.00+
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.709
+PlayResX: 720
+PlayResY: 1280
+
+[V4+ Styles]
+Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
+Style: Caption,Instrument Sans,42,&H00F8F5F2,&H0066D1FF,&HCC090A12,&H80090A12,-1,0,0,0,100,100,0,0,1,3,1,2,52,52,78,1
+Style: Title,Instrument Sans,48,&H00F8F5F2,&H0066D1FF,&HAA090A12,&H00090A12,-1,0,0,0,100,100,0,0,1,1.5,0,7,48,48,40,1
+Style: Chapter,Geist Mono,17,&H00D8D1FF,&H0066D1FF,&H99090A12,&H00090A12,0,0,0,0,100,100,0,0,1,1,0,9,48,48,48,1
+Style: Kicker,Geist Mono,16,&H0066D1FF,&H00FFFFFF,&H99090A12,&H00090A12,0,0,0,0,100,100,0,0,1,1,0,7,48,48,48,1
+
+[Events]
+Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+Dialogue: 2,0:00:00.00,0:00:13.00,Chapter,,0,0,0,,{\an9\pos(672,50)\fad(120,100)}01 / THE SHIFT
+Dialogue: 0,0:00:00.00,0:00:13.00,Kicker,,0,0,0,,{\an7\pos(48,42)\p1\bord0\shad0\c&H805C5260&}m 0 0 l 624 0 624 4 0 4{\p0}
+Dialogue: 1,0:00:00.00,0:00:13.00,Kicker,,0,0,0,,{\an7\pos(48,42)\p1\bord0\shad0\c&H00EB2E83&\fad(100,100)}m 0 0 l 208 0 208 4 0 4{\p0}
+Dialogue: 2,0:00:13.00,0:00:25.50,Chapter,,0,0,0,,{\an9\pos(672,50)\fad(120,100)}02 / WHAT MATTERS
+Dialogue: 0,0:00:13.00,0:00:25.50,Kicker,,0,0,0,,{\an7\pos(48,42)\p1\bord0\shad0\c&H805C5260&}m 0 0 l 624 0 624 4 0 4{\p0}
+Dialogue: 1,0:00:13.00,0:00:25.50,Kicker,,0,0,0,,{\an7\pos(48,42)\p1\bord0\shad0\c&H00EB2E83&\fad(100,100)}m 0 0 l 416 0 416 4 0 4{\p0}
+Dialogue: 2,0:00:25.50,0:00:35.75,Chapter,,0,0,0,,{\an9\pos(672,50)\fad(120,100)}03 / THE CHOICE
+Dialogue: 0,0:00:25.50,0:00:35.75,Kicker,,0,0,0,,{\an7\pos(48,42)\p1\bord0\shad0\c&H805C5260&}m 0 0 l 624 0 624 4 0 4{\p0}
+Dialogue: 1,0:00:25.50,0:00:35.75,Kicker,,0,0,0,,{\an7\pos(48,42)\p1\bord0\shad0\c&H00EB2E83&\fad(100,100)}m 0 0 l 624 0 624 4 0 4{\p0}
+Dialogue: 3,0:00:00.16,0:00:02.76,Kicker,,0,0,0,,{\an7\pos(50,69)\fad(100,120)}A QUICK RESET
+Dialogue: 3,0:00:00.16,0:00:02.76,Title,,0,0,0,,{\an7\pos(48,98)\fad(120,180)\fscx94\fscy94\t(0,180,\fscx100\fscy100)}TIME ≠ {\c&H00EB2E83&}PRIORITIES
+Dialogue: 3,0:00:13.10,0:00:18.25,Title,,0,0,0,,{\an7\pos(50,93)\fad(130,180)\fscx95\fscy95\t(0,160,\fscx100\fscy100)}MANAGE WHAT {\c&H00EB2E83&}MATTERS
+Dialogue: 3,0:00:21.95,0:00:25.35,Title,,0,0,0,,{\an7\pos(50,93)\fad(120,160)\fscx95\fscy95\t(0,160,\fscx100\fscy100)}MAKE THE {\c&H00EB2E83&}CHOICE
+Dialogue: 3,0:00:28.70,0:00:31.55,Title,,0,0,0,,{\an7\pos(50,93)\fad(120,160)\fscx95\fscy95\t(0,160,\fscx100\fscy100)}ONE THING {\c&H00EB2E83&}WINS
+Dialogue: 1,0:00:00.16,0:00:02.76,Kicker,,0,0,0,,{\an7\pos(50,157)\p1\bord0\shad0\fad(100,150)\c&H00EB2E83&}m 0 0 l 118 0 118 3 0 3{\p0}
+Dialogue: 1,0:00:13.10,0:00:18.25,Kicker,,0,0,0,,{\an7\pos(50,157)\p1\bord0\shad0\fad(100,150)\c&H00EB2E83&}m 0 0 l 118 0 118 3 0 3{\p0}
+Dialogue: 1,0:00:21.95,0:00:25.35,Kicker,,0,0,0,,{\an7\pos(50,157)\p1\bord0\shad0\fad(100,150)\c&H00EB2E83&}m 0 0 l 118 0 118 3 0 3{\p0}
+Dialogue: 1,0:00:28.70,0:00:31.55,Kicker,,0,0,0,,{\an7\pos(50,157)\p1\bord0\shad0\fad(100,150)\c&H00EB2E83&}m 0 0 l 118 0 118 3 0 3{\p0}
+Dialogue: 5,0:00:00.05,0:00:04.22,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}Time doesn't need to be managed.\NYour {\c&H00EB2E83&}priorities{\c&H00F8F5F2&} need to be managed.
+Dialogue: 5,0:00:04.46,0:00:07.97,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}We have the {\c&H00EB2E83&}cookie-cutter{\c&H00F8F5F2&}\Ninformation
+Dialogue: 5,0:00:08.03,0:00:09.91,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}about how to manage your {\c&H00EB2E83&}calendars{\c&H00F8F5F2&}
+Dialogue: 5,0:00:10.26,0:00:13.03,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}and how to spend {\c&H00EB2E83&}X amount of time{\c&H00F8F5F2&}\Non certain things.
+Dialogue: 5,0:00:13.04,0:00:17.90,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}Now we're moving from managing time\Nto managing what's {\c&H00EB2E83&}important{\c&H00F8F5F2&}.
+Dialogue: 5,0:00:18.06,0:00:20.70,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}And I wanna say something\Nthat a lot of people won't say:
+Dialogue: 5,0:00:20.83,0:00:25.44,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}But at some point, you're gonna have to\N{\c&H00EB2E83&}choose{\c&H00F8F5F2&} what your priorities are.
+Dialogue: 5,0:00:25.58,0:00:28.57,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}I know we like to say we have\Ncompeting {\c&H00EB2E83&}priorities{\c&H00F8F5F2&}.
+Dialogue: 5,0:00:28.65,0:00:30.68,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}At some point,\N{\c&H00EB2E83&}something has to win{\c&H00F8F5F2&}.
+Dialogue: 5,0:00:30.80,0:00:33.30,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}You have to choose one thing\Nover the other.
+Dialogue: 5,0:00:33.44,0:00:35.60,Caption,,0,0,0,,{\an2\pos(360,1167)\fad(100,130)\fscx97\fscy97\t(0,135,\fscx100\fscy100)}If you wanna actually be {\c&H00EB2E83&}effective{\c&H00F8F5F2&}.
+Dialogue: 4,0:00:08.12,0:00:09.48,Kicker,,0,0,0,,{\an7\pos(0,0)\p1\bord0\shad0\c&H00F1F6F7&\fad(70,70)}m 0 0 l 720 0 720 1280 0 1280{\p0}
+Dialogue: 6,0:00:08.15,0:00:09.46,Title,,0,0,0,,{\an7\move(760,238,62,238,0,150)\fs86\fscx93\fscy93\t(0,150,\fscx100\fscy100)\c&H00EB2E83&\bord0\shad0\fad(70,70)}CALENDARS
+Dialogue: 6,0:00:08.20,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(79,406)\p1\bord0\shad0\c&H00FFFFFF&\fad(80,80)}m 0 0 l 562 0 562 374 0 374{\p0}
+Dialogue: 6,0:00:08.20,0:00:09.45,Title,,0,0,0,,{\an7\pos(79,406)\p1\bord4\3c&H001B1916&\1a&HFF&\shad0\fad(80,80)}m 0 0 l 562 0 562 374 0 374{\p0}
+Dialogue: 7,0:00:08.24,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(82,409)\p1\bord0\shad0\c&H00EB2E83&\fad(70,70)}m 0 0 l 556 0 556 74 0 74{\p0}
+Dialogue: 7,0:00:08.27,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(194,490)\p1\bord0\shad0\c&H007A7975&\fad(70,70)}m 0 0 l 3 0 3 270 0 270{\p0}
+Dialogue: 7,0:00:08.27,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(306,490)\p1\bord0\shad0\c&H007A7975&\fad(70,70)}m 0 0 l 3 0 3 270 0 270{\p0}
+Dialogue: 7,0:00:08.27,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(418,490)\p1\bord0\shad0\c&H007A7975&\fad(70,70)}m 0 0 l 3 0 3 270 0 270{\p0}
+Dialogue: 7,0:00:08.27,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(530,490)\p1\bord0\shad0\c&H007A7975&\fad(70,70)}m 0 0 l 3 0 3 270 0 270{\p0}
+Dialogue: 7,0:00:08.27,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(82,578)\p1\bord0\shad0\c&H007A7975&\fad(70,70)}m 0 0 l 556 0 556 3 0 3{\p0}
+Dialogue: 7,0:00:08.27,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(82,666)\p1\bord0\shad0\c&H007A7975&\fad(70,70)}m 0 0 l 556 0 556 3 0 3{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(104,515)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(218,515)\p1\bord0\shad0\c&H00EB2E83&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(330,515)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(442,515)\p1\bord0\shad0\c&H0094E7A3&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(554,515)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(104,603)\p1\bord0\shad0\c&H00EB2E83&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(218,603)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(330,603)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(442,691)\p1\bord0\shad0\c&H0094E7A3&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 8,0:00:08.30,0:00:09.45,Kicker,,0,0,0,,{\an7\pos(554,691)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 61 0 61 43 0 43{\p0}
+Dialogue: 4,0:00:14.68,0:00:16.20,Kicker,,0,0,0,,{\an7\pos(0,0)\p1\bord0\shad0\c&H0017120F&\fad(65,65)}m 0 0 l 720 0 720 1280 0 1280{\p0}
+Dialogue: 6,0:00:14.72,0:00:16.18,Title,,0,0,0,,{\an7\move(-560,247,68,247,0,170)\fs116\fscx93\fscy93\t(0,150,\fscx100\fscy100)\c&H00FFFFFF&\bord0\shad0\fad(60,60)}TIME
+Dialogue: 6,0:00:14.80,0:00:16.18,Title,,0,0,0,,{\an7\move(760,574,68,574,0,190)\fs76\fscx93\fscy93\t(0,150,\fscx100\fscy100)\c&H0094E7A3&\bord0\shad0\fad(60,60)}WHAT MATTERS
+Dialogue: 7,0:00:14.78,0:00:16.18,Kicker,,0,0,0,,{\an7\pos(72,426)\p1\bord0\shad0\c&H00EB2E83&\fad(60,70)}m 0 28 l 285 28 285 0 352 52 285 104 285 76 0 76{\p0}
+Dialogue: 7,0:00:14.86,0:00:16.17,Kicker,,0,0,0,,{\an7\pos(72,726)\p1\bord0\shad0\c&H0094E7A3&\fad(70,70)}m 0 0 l 548 0 548 7 0 7{\p0}
+Dialogue: 4,0:00:22.20,0:00:23.72,Kicker,,0,0,0,,{\an7\pos(0,0)\p1\bord0\shad0\c&H00F1F6F7&\fad(70,70)}m 0 0 l 720 0 720 1280 0 1280{\p0}
+Dialogue: 6,0:00:22.22,0:00:23.70,Title,,0,0,0,,{\an7\move(760,218,64,218,0,160)\fs102\fscx93\fscy93\t(0,150,\fscx100\fscy100)\c&H00EB2E83&\bord0\shad0\fad(60,60)}CHOOSE
+Dialogue: 6,0:00:22.28,0:00:23.70,Kicker,,0,0,0,,{\an7\pos(67,461)\p1\bord0\shad0\c&H00FFFFFF&\fad(75,75)}m 0 0 l 255 0 255 310 0 310{\p0}
+Dialogue: 6,0:00:22.28,0:00:23.70,Title,,0,0,0,,{\an7\pos(67,461)\p1\bord4\3c&H007A7975&\1a&HFF&\shad0\fad(75,75)}m 0 0 l 255 0 255 310 0 310{\p0}
+Dialogue: 6,0:00:22.33,0:00:23.70,Kicker,,0,0,0,,{\an7\pos(398,461)\p1\bord0\shad0\c&H00FFFFFF&\fad(70,70)}m 0 0 l 255 0 255 310 0 310{\p0}
+Dialogue: 6,0:00:22.33,0:00:23.70,Title,,0,0,0,,{\an7\pos(398,461)\p1\bord7\3c&H00EB2E83&\1a&HFF&\shad0\fad(65,65)}m 0 0 l 255 0 255 310 0 310{\p0}
+Dialogue: 8,0:00:22.38,0:00:23.70,Kicker,,0,0,0,,{\an7\pos(101,520)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 174 0 174 15 0 15{\p0}
+Dialogue: 8,0:00:22.38,0:00:23.70,Kicker,,0,0,0,,{\an7\pos(101,580)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 137 0 137 15 0 15{\p0}
+Dialogue: 8,0:00:22.38,0:00:23.70,Kicker,,0,0,0,,{\an7\pos(101,640)\p1\bord0\shad0\c&H007A7975&\fad(60,60)}m 0 0 l 184 0 184 15 0 15{\p0}
+Dialogue: 8,0:00:22.38,0:00:23.70,Kicker,,0,0,0,,{\an7\pos(432,520)\p1\bord0\shad0\c&H00EB2E83&\fad(60,60)}m 0 0 l 174 0 174 15 0 15{\p0}
+Dialogue: 8,0:00:22.38,0:00:23.70,Kicker,,0,0,0,,{\an7\pos(432,580)\p1\bord0\shad0\c&H0094E7A3&\fad(60,60)}m 0 0 l 137 0 137 15 0 15{\p0}
+Dialogue: 8,0:00:22.38,0:00:23.70,Kicker,,0,0,0,,{\an7\pos(432,640)\p1\bord0\shad0\c&H00EB2E83&\fad(60,60)}m 0 0 l 184 0 184 15 0 15{\p0}
+Dialogue: 4,0:00:29.05,0:00:30.28,Kicker,,0,0,0,,{\an7\pos(0,0)\p1\bord0\shad0\c&H0017120F&\fad(60,60)}m 0 0 l 720 0 720 1280 0 1280{\p0}
+Dialogue: 6,0:00:29.08,0:00:30.26,Title,,0,0,0,,{\an7\move(760,236,52,236,0,150)\fs83\fscx93\fscy93\t(0,150,\fscx100\fscy100)\c&H00FFFFFF&\bord0\shad0\fad(60,60)}ONE THING WINS
+Dialogue: 7,0:00:29.21,0:00:30.26,Kicker,,0,0,0,,{\an7\pos(54,358)\p1\bord0\shad0\c&H00EB2E83&\fad(60,60)}m 0 0 l 155 0 155 8 0 8{\p0}
+Dialogue: 7,0:00:29.13,0:00:30.26,Kicker,,0,0,0,,{\an7\pos(118,486)\p1\bord0\shad0\c&H00EB2E83&\fad(55,55)}m 0 0 l 482 0 482 91 0 91{\p0}
+Dialogue: 7,0:00:29.17,0:00:30.26,Kicker,,0,0,0,,{\an7\pos(144,616)\p1\bord0\shad0\c&H007A7975&\fad(65,65)}m 0 0 l 430 0 430 91 0 91{\p0}
+Dialogue: 7,0:00:29.21,0:00:30.26,Kicker,,0,0,0,,{\an7\pos(170,746)\p1\bord0\shad0\c&H007A7975&\fad(75,75)}m 0 0 l 378 0 378 91 0 91{\p0}
+Dialogue: 8,0:00:29.31,0:00:30.26,Kicker,,0,0,0,,{\an7\pos(118,486)\p1\bord0\shad0\c&H0094E7A3&\fad(50,50)}m 0 0 l 482 0 482 91 0 91{\p0}
+Dialogue: 9,0:00:29.37,0:00:30.26,Title,,0,0,0,,{\an7\pos(145,497)\fs50\fscx93\fscy93\t(0,150,\fscx100\fscy100)\c&H0017120F&\bord0\shad0\fad(45,45)}01

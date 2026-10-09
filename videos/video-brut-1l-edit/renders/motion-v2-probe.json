@@ -1,0 +1,23 @@
+{
+  "media": "renders/video-brut-1l-motion-v2-en.mp4",
+  "source": "FFmpeg demux header and full decode",
+  "summary": {
+    "format": "MP4",
+    "duration_seconds": 35.75,
+    "size_bytes": 8544235,
+    "overall_bitrate_kbps": 1911,
+    "video": {
+      "codec": "h264",
+      "width": 720,
+      "height": 1280,
+      "fps": 24,
+      "decoded_frames": 858
+    },
+    "audio": {
+      "codec": "aac",
+      "sample_rate_hz": 44100,
+      "channels": 2
+    },
+    "stream_count": 2
+  }
+}

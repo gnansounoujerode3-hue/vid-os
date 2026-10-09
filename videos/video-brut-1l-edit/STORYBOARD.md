@@ -1,12 +1,20 @@
 # Storyboard — montage anglais avec motion design
 
+## Montage plein écran v2
+
 | Temps rendu | Contenu / sous-titres | Image et motion design | Son |
 |---|---|---|---|
-| 0:00–0:04 | « Time doesn't need to be managed. Your priorities need to be managed. » | Titre d’ouverture « TIME ≠ PRIORITIES », barre éditoriale animée, accent or. | Voix d’origine. |
-| 0:04–0:13 | Calendriers, information « cookie-cutter », temps consacré aux choses. | Punch-ins doux; sous-titres blancs avec mots-clés or. | Voix d’origine. |
-| 0:13–0:21 | Passage de la gestion du temps à ce qui compte. | Repère de chapitre « WHAT MATTERS », progression de la barre supérieure. | Voix d’origine. |
-| 0:21–0:25 | Choisir ses priorités. | Callout « MAKE THE CHOICE »; coupes calées sur les pauses. | Voix d’origine. |
-| 0:25–0:31 | Priorités concurrentes; une chose doit gagner. | Chapitre « THE CHOICE », accent « ONE THING WINS ». | Voix d’origine. |
-| 0:31–0:35,75 | Choisir une chose plutôt qu’une autre pour être efficace. | Dernier punch-in, sous-titres anglais et finition nette. | Voix d’origine. |
+| 0:00–0:04 | « Time doesn't need to be managed. Your priorities need to be managed. » | Locuteur plein cadre, titre « TIME ≠ PRIORITIES », accent violet et mots-clés cinétiques. | Voix d’origine. |
+| 0:04–0:08 | « Cookie-cutter information » | Punch-ins mesurés sur le locuteur; titrage anglais concis. | Voix d’origine. |
+| 0:08,12–0:09,48 | « …manage your calendars » | Cutaway plein écran : grille calendrier abstraite, violet/vert; sous-titres maintenus. | Voix d’origine continue. |
+| 0:09,48–0:14,68 | Calendriers et passage de la gestion du temps à ce qui compte. | Retour A-roll, punch-in et mots-clés violets. | Voix d’origine. |
+| 0:14,68–0:16,20 | « …moving from managing time to managing what's important » | Carte typographique plein écran « TIME → WHAT MATTERS ». | Voix d’origine continue. |
+| 0:16,20–0:22,20 | Passage du locuteur vers « choose what your priorities are ». | Retour A-roll et callout « MAKE THE CHOICE ». | Voix d’origine. |
+| 0:22,20–0:23,72 | « …you're gonna have to choose… » | Cutaway plein écran : deux cartes abstraites, l’une mise en évidence. | Voix d’origine continue. |
+| 0:23,72–0:29,05 | Priorités concurrentes. | Retour A-roll; mots-clés violets, cadrage resserré. | Voix d’origine. |
+| 0:29,05–0:30,28 | « …something has to win » | Cutaway plein écran : pile de priorités, une barre passe en tête. | Voix d’origine continue. |
+| 0:30,28–0:35,75 | Choisir une chose plutôt qu’une autre pour être efficace. | Retour A-roll, callout final et sous-titres anglais. | Voix d’origine. |
 
-**Règles :** le texte reste en anglais et n’est pas traduit. Les sous-titres sont un premier jet d’ASR local, normalisé pour la lecture; vérifier l’ouverture (≈ 3–6 s), le passage ≈ 18,7–21,3 s et la formule « X amount of time » avant une diffusion publique. Pas de musique ou de voix off ajoutée.
+**Direction :** garder une composition 9:16 plein écran; s’inspirer du montage des références par les inserts, le rythme A-roll/cutaway et les mots-clés animés, sans reprendre leur habillage « Our Work ». Aucun logo/handle des références, aucune traduction française, aucune voix off ou musique ajoutée.
+
+**Transcription :** premier jet d’ASR local, normalisé pour la lecture; vérifier l’ouverture (≈ 3–6 s), le passage ≈ 18,7–21,3 s et « X amount of time » avant diffusion publique. La voix originale n’a pas été envoyée à un service externe.

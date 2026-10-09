@@ -1,0 +1,35 @@
+{
+  "media": "renders/video-brut-1l-motion-v2-en.mp4",
+  "passed": true,
+  "technical_checks": {
+    "ffmpeg_full_demux_decode": true,
+    "duration_35_75_seconds": true,
+    "portrait_720x1280": true,
+    "24_fps": true,
+    "h264_aac": true,
+    "stereo_44100_audio": true,
+    "only_video_audio_streams": true,
+    "audio_full_decode": true,
+    "858_video_frames": true
+  },
+  "summary": {
+    "format": "MP4",
+    "duration_seconds": 35.75,
+    "size_bytes": 8544235,
+    "overall_bitrate_kbps": 1911,
+    "video": {
+      "codec": "h264",
+      "width": 720,
+      "height": 1280,
+      "fps": 24,
+      "decoded_frames": 858
+    },
+    "audio": {
+      "codec": "aac",
+      "sample_rate_hz": 44100,
+      "channels": 2
+    },
+    "stream_count": 2
+  },
+  "content_note": "Full-screen 9:16 social edit with four short graphic cutaways over continuous original audio. Captions remain English and are burned in. Verify ASR wording around source 3–6 s, 18.7–21.3 s, and “X amount of time” before public/paid use."
+}

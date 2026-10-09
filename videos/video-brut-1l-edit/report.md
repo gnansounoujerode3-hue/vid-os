@@ -1,10 +1,10 @@
 # Rapport de production
 
-**Version sous-titrée et motion design rendue — 9 octobre 2026.**
+**Montage plein écran v2, inspiré des références « Our Work » — 9 octobre 2026.**
 
 ## Direction retenue
 
-Après demande de l’utilisateur, la version sans sous-titres a été remplacée par une version sous-titrée **en anglais**, sans traduction française. Le montage conserve les rushes de la prise source, resserre les pauses, alterne les recadrages et ajoute un habillage éditorial social : titre d’ouverture, progression/chapitres, callouts, mots-clés dorés et sous-titres cinétiques. Le décor bleu-violet et la lumière chaude sont préservés.
+La correction de direction est intégrée : les références servent d’inspiration pour le **montage**, pas pour la mise en page de présentation. La v2 reste un portrait 9:16 plein écran, sans cadre portfolio ni écran avant/après. Elle alterne l’A-roll avec quatre cutaways graphiques courts — calendrier, « TIME → WHAT MATTERS », choix abstrait et pile de priorités — et renforce les titres cinétiques en violet/vert. La voix originale continue sous les inserts; les captions restent en anglais.
 
 ## Transcription
 
@@ -17,17 +17,17 @@ Après demande de l’utilisateur, la version sans sous-titres a été remplacé
 
 - Source : `sources/video-brut-1l-original.mp4` — 37,125 s, 720 × 1280, 24 i/s.
 - Neuf silences resserrés et dix segments assemblés; recadrages jusqu’à environ 1,12×.
-- Correction colorimétrique discrète : contraste +3,5 %, saturation +4,5 %.
+- Correction colorimétrique discrète préservée; les cutaways n’ajoutent pas de nouvelles paroles.
 
-## Livrable et contrôles
+## Livrables et contrôles
 
-- MP4 final : `renders/video-brut-1l-pinterest-en.mp4` — 35,750 s, H.264/AAC, 720 × 1280, 24 i/s, audio stéréo 44,1 kHz; sous-titres brûlés dans l’image.
-- Sidecars anglais éditables : `subtitles/video-brut-1l-en.ass` (style) et `subtitles/video-brut-1l-en.srt` (texte/minutage).
-- Audio d’origine conservé, sans musique ni voix ajoutée; métriques de la base : −14,6 LUFS intégrés, true peak −0,8 dBFS.
-- Décodage vidéo et audio complet vérifié; un flux H.264 et un flux AAC, aucun flux texte séparé.
-- Planche de contact finale inspectée : `snapshots/final-contact-sheet.png`.
-- Vérifications techniques : `renders/probe.json` et `renders/verify.json`.
+- Nouveau montage social plein écran : `renders/video-brut-1l-motion-v2-en.mp4` — 35,750 s, H.264/AAC, 720 × 1280, 24 i/s, 8 544 235 octets.
+- Première version conservée : `renders/video-brut-1l-pinterest-en.mp4`.
+- Sidecars v2 anglais modifiables : `subtitles/video-brut-1l-motion-v2-en.ass` et `subtitles/video-brut-1l-motion-v2-en.srt`; cues et repères : `subtitles/captions-motion-v2-en.json`.
+- Audio d’origine conservé; pas de musique, voix off ou effets sonores ajoutés.
+- Décodage audio/vidéo complet validé (858 images vidéo); métadonnées et contrôles : `renders/motion-v2-probe.json`, `renders/motion-v2-verify.json`.
+- Aperçu : `snapshots/motion-v2-contact-sheet.png`.
 
 ## Reproduction
 
-Voir `README.md`; les deux scripts de rendu sont dans `compositions/`.
+Voir `README.md`. Le rendu v2 est généré par `compositions/render_social_motion.py` après `render_edit.py`.
